@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment # This denotes that it's a Deployment
+metadata:
+  name: react-docker # Name of the deployment
+spec:
+  replicas: 2 # 2 Pods will be created.
+  selector:
+    matchLabels:
+      app: react-docker
+  template:
+    metadata:
+      labels:
+        app: react-docker
+    spec:
+      containers: # Pod container specification
+        - name: react-docker
+          image: oanhhtk/react-docker
+          ports:
+            - containerPort: 3000 # Port which will be exposed
